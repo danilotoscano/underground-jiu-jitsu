@@ -66,37 +66,37 @@ export default function App() {
         {/* 1. Cover: Real Photo Header (from attachment 2) */}
         <GymCoverBanner />
 
-        {/* 2. Brand Identity Header & Real Logo (attachment 1) */}
-        <section className="relative px-4 pt-4 pb-3 text-center z-20">
+        {/* 2. Brand Identity Header & Real Logo (attachment 1) - Compacted */}
+        <section className="relative px-4 pt-2 pb-1.5 text-center z-20">
           {/* Logo badge with clean border and depth */}
-          <div className="inline-block p-2 rounded-2xl bg-black border border-neutral-800 shadow-[0_8px_25px_rgba(0,0,0,0.8)]">
-            <UndergroundLogo size="md" />
+          <div className="inline-block p-1.5 rounded-xl bg-black border border-neutral-800 shadow-[0_6px_20px_rgba(0,0,0,0.8)]">
+            <UndergroundLogo size="sm" />
           </div>
 
           {/* Subtitle & Address */}
-          <div className="mt-2.5">
+          <div className="mt-1.5">
             <div className="flex items-center justify-center gap-2">
-              <span className="h-[1px] w-5 bg-neutral-800"></span>
-              <p className="text-xs font-semibold tracking-widest text-neutral-400 uppercase">
+              <span className="h-[1px] w-4 bg-neutral-800"></span>
+              <p className="text-[11px] font-semibold tracking-widest text-neutral-400 uppercase">
                 CT John Grego • Caucaia - CE
               </p>
-              <span className="h-[1px] w-5 bg-neutral-800"></span>
+              <span className="h-[1px] w-4 bg-neutral-800"></span>
             </div>
 
             <button
               onClick={handleScrollToMap}
-              className="mt-1.5 inline-flex items-center gap-1.5 text-[11px] text-neutral-400 hover:text-white transition-colors cursor-pointer group"
+              className="mt-1 inline-flex items-center gap-1.5 text-[10px] text-neutral-400 hover:text-white transition-colors cursor-pointer group"
             >
-              <MapPin className="w-3 h-3 text-red-500 group-hover:scale-110 transition-transform" />
-              <span className="underline decoration-neutral-800 underline-offset-4">
+              <MapPin className="w-2.5 h-2.5 text-red-500 group-hover:scale-110 transition-transform" />
+              <span className="underline decoration-neutral-800 underline-offset-2">
                 Av. Juaci Sampaio Pontes, 843
               </span>
             </button>
           </div>
 
           {/* Centro de Treinamento de Luta Badge */}
-          <div className="mt-2.5 flex items-center justify-center">
-            <span className="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 flex items-center gap-1.5 text-[11px] font-semibold text-neutral-200">
+          <div className="mt-1.5 flex items-center justify-center">
+            <span className="px-2.5 py-0.5 rounded-full bg-neutral-900 border border-neutral-800 flex items-center gap-1.5 text-[10px] font-semibold text-neutral-200">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
               Centro de Treinamento de Luta
             </span>

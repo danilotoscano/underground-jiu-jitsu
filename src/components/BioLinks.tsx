@@ -30,18 +30,18 @@ export const BioLinks: React.FC<BioLinksProps> = ({
             'Olá! Gostaria de agendar minha Aula Experimental na Underground Jiu-Jitsu!'
           )
         }
-        className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:brightness-110 text-neutral-950 font-bold shadow-md shadow-emerald-500/20 transition-all flex items-center justify-between group cursor-pointer active:scale-[0.98]"
+        className="w-full py-2 px-3.5 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:brightness-110 text-neutral-950 font-bold shadow-sm shadow-emerald-500/20 transition-all flex items-center justify-between group cursor-pointer active:scale-[0.98]"
       >
-        <div className="flex items-center gap-2.5">
-          <CalendarCheck className="w-4 h-4 text-neutral-950" />
-          <span className="text-xs sm:text-sm font-bold tracking-wide uppercase">
-            Aula Experimental
+        <div className="flex items-center gap-2">
+          <CalendarCheck className="w-3.5 h-3.5 text-neutral-950 shrink-0" />
+          <span className="text-[11px] sm:text-xs font-bold tracking-wide uppercase">
+            Agende sua Aula Experimental
           </span>
-          <span className="text-[10px] bg-black/20 text-neutral-950 px-1.5 py-0.5 rounded font-extrabold uppercase">
+          <span className="text-[9px] bg-black/20 text-neutral-950 px-1.5 py-0.5 rounded font-extrabold uppercase shrink-0">
             Grátis
           </span>
         </div>
-        <ChevronRight className="w-4 h-4 text-neutral-950/80 group-hover:translate-x-0.5 transition-transform" />
+        <ChevronRight className="w-3.5 h-3.5 text-neutral-950/80 group-hover:translate-x-0.5 transition-transform shrink-0" />
       </button>
 
       {/* 2. Avaliacao google */}
@@ -97,9 +97,9 @@ export const BioLinks: React.FC<BioLinksProps> = ({
         className="w-full py-2.5 px-4 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-pink-500/50 text-neutral-100 transition-all flex items-center justify-between group shadow-sm cursor-pointer active:scale-[0.98]"
       >
         <div className="flex items-center gap-2.5">
-          <Instagram className="w-4 h-4 text-pink-400" />
+          <Instagram className="w-4 h-4 text-pink-400 shrink-0" />
           <span className="text-xs sm:text-sm font-semibold tracking-wide">
-            Instagram
+            Siga no Instagram
           </span>
           <span className="text-[10px] text-neutral-400">
             @ctjohngregoo
