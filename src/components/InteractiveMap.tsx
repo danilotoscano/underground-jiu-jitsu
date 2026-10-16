@@ -44,8 +44,8 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ onCopyAddress, c
         </a>
       </div>
 
-      {/* Interactive Google Maps Frame */}
-      <div className="relative w-full h-56 sm:h-64 rounded-xl overflow-hidden border border-neutral-700/80 shadow-inner bg-neutral-950">
+      {/* Interactive Google Maps Frame - Compact size */}
+      <div className="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden border border-neutral-700/80 shadow-inner bg-neutral-950">
         <iframe
           title="Mapa de Localização Underground Jiu-Jitsu"
           src={mapEmbedUrl}

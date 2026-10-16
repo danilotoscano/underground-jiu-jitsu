@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Shield, Sparkles, MessageCircle, Heart, Award, Users } from 'lucide-react';
+import { Clock, Swords, Medal, Target, Zap, MessageCircle } from 'lucide-react';
 
 interface ModalitiesFooterProps {
   onOpenWhatsApp: () => void;
@@ -11,29 +11,29 @@ export const ModalitiesFooter: React.FC<ModalitiesFooterProps> = ({ onOpenWhatsA
       title: 'Jiu-Jitsu Adulto',
       tag: 'Principal',
       desc: 'Iniciantes e graduados. Defesa pessoal, condicionamento físico e competição.',
-      badgeColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-      icon: Award,
+      badgeColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+      icon: Swords,
     },
     {
       title: 'Kids 1',
       tag: '6 a 11 anos',
       desc: 'Coordenação motora, respeito, socialização e disciplina marcial.',
-      badgeColor: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
-      icon: Heart,
+      badgeColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+      icon: Medal,
     },
     {
       title: 'Kids 2',
       tag: '12 a 15 anos',
       desc: 'Foco, autodefesa, autoconfiança, desenvolvimento técnico e esportivo.',
-      badgeColor: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-      icon: Shield,
+      badgeColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+      icon: Target,
     },
     {
       title: 'Taekwondo',
       tag: 'Marcial',
       desc: 'Flexibilidade, velocidade, chutes dinâmicos, disciplina e concentração.',
-      badgeColor: 'bg-red-500/10 text-red-400 border-red-500/20',
-      icon: Sparkles,
+      badgeColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+      icon: Zap,
     },
   ];
 
@@ -42,12 +42,8 @@ export const ModalitiesFooter: React.FC<ModalitiesFooterProps> = ({ onOpenWhatsA
       <div className="max-w-md mx-auto space-y-6">
         {/* Modalities Header */}
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-neutral-300 font-medium mb-2">
-            <Users className="w-3.5 h-3.5 text-amber-400" />
-            <span>Nossas Modalidades</span>
-          </div>
-          <h3 className="font-heading text-2xl font-bold tracking-wider text-white uppercase">
-            Treinos & Graduações
+          <h3 className="font-heading text-2xl sm:text-3xl font-black tracking-wider text-white uppercase">
+            Nossas Modalidades
           </h3>
           <p className="text-xs text-neutral-400 mt-0.5">
             Metodologia estruturada para todas as idades e objetivos
@@ -61,11 +57,11 @@ export const ModalitiesFooter: React.FC<ModalitiesFooterProps> = ({ onOpenWhatsA
             return (
               <div
                 key={index}
-                className="p-3.5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 hover:border-neutral-700 transition-all text-left"
+                className="p-3.5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 hover:border-emerald-500/30 transition-all text-left"
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-sm font-bold text-white flex items-center gap-1.5">
-                    <Icon className="w-4 h-4 text-neutral-400" />
+                    <Icon className="w-4 h-4 text-emerald-400" />
                     {item.title}
                   </span>
                   <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${item.badgeColor}`}>
@@ -82,15 +78,15 @@ export const ModalitiesFooter: React.FC<ModalitiesFooterProps> = ({ onOpenWhatsA
 
         {/* Hours / Schedule Box */}
         <div className="p-4 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-950 border border-neutral-800 text-center relative overflow-hidden">
-          <div className="flex items-center justify-center gap-2 text-amber-400 mb-1">
-            <Clock className="w-4 h-4" />
+          <div className="flex items-center justify-center gap-2 text-emerald-400 mb-1">
+            <Clock className="w-4 h-4 text-emerald-400" />
             <span className="font-heading text-lg font-bold tracking-wider uppercase text-white">
               Horários de Funcionamento
             </span>
           </div>
           
           <div className="my-2 py-2 px-4 rounded-xl bg-neutral-950/80 border border-neutral-800/80 inline-block">
-            <span className="font-heading text-2xl font-black text-amber-400 tracking-wider">
+            <span className="font-heading text-2xl font-black text-emerald-400 tracking-wider">
               07h às 22h
             </span>
             <span className="block text-[11px] text-neutral-400">

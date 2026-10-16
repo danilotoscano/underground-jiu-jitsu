@@ -41,8 +41,8 @@ export const PixModal: React.FC<PixModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         {/* Icon & Title */}
-        <div className="mx-auto w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-3">
-          <Zap className="w-6 h-6" />
+        <div className="mx-auto w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-3 font-bold text-2xl">
+          $
         </div>
 
         <h3 className="font-heading text-2xl font-bold tracking-wider text-white uppercase">

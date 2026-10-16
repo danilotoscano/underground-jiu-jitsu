@@ -67,9 +67,9 @@ export default function App() {
         <GymCoverBanner />
 
         {/* 2. Brand Identity Header & Real Logo (attachment 1) */}
-        <section className="relative px-4 pt-0 pb-4 text-center -mt-16 z-20">
+        <section className="relative px-4 pt-4 pb-3 text-center z-20">
           {/* Logo badge with clean border and depth */}
-          <div className="inline-block p-2.5 rounded-3xl bg-black border-2 border-neutral-800 shadow-[0_12px_35px_rgba(0,0,0,0.95)]">
+          <div className="inline-block p-2 rounded-2xl bg-black border border-neutral-800 shadow-[0_8px_25px_rgba(0,0,0,0.8)]">
             <UndergroundLogo size="md" />
           </div>
 
@@ -94,13 +94,11 @@ export default function App() {
             </button>
           </div>
 
-          {/* Modalities badges */}
-          <div className="mt-2.5 flex flex-wrap items-center justify-center gap-1.5 text-[10px] font-medium text-neutral-400">
-            <span className="px-2 py-0.5 rounded-full bg-neutral-900 border border-neutral-800 flex items-center gap-1 text-neutral-300">
-              <Flame className="w-2.5 h-2.5 text-amber-500" /> Jiu-Jitsu Adulto & Kids
-            </span>
-            <span className="px-2 py-0.5 rounded-full bg-neutral-900 border border-neutral-800 flex items-center gap-1 text-neutral-300">
-              <Award className="w-2.5 h-2.5 text-cyan-400" /> Taekwondo
+          {/* Centro de Treinamento de Luta Badge */}
+          <div className="mt-2.5 flex items-center justify-center">
+            <span className="px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 flex items-center gap-1.5 text-[11px] font-semibold text-neutral-200">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              Centro de Treinamento de Luta
             </span>
           </div>
         </section>
