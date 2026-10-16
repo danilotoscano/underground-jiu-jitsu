@@ -1,6 +1,8 @@
 {
-  "name": "Underground Jiu-Jitsu | Biosite Oficial",
+  "name": "Underground Jiu-Jitsu | CT John Grego",
   "description": "Biosite oficial da Underground Jiu-Jitsu em Caucaia - CE. Agende sua aula experimental, acesse WhatsApp, Instagram, localização, PIX e horários.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
