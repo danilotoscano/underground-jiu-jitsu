@@ -7,7 +7,7 @@ interface ModalitiesSectionProps {
 }
 
 // Kimono / Gi martial arts icon
-const KimonoIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
+const KimonoIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' }) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
@@ -26,7 +26,7 @@ const KimonoIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' })
 );
 
 // Martial arts Kick icon for Taekwondo
-const KickIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
+const KickIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' }) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
@@ -87,21 +87,21 @@ export const ModalitiesSection: React.FC<ModalitiesSectionProps> = ({ onOpenWhat
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full px-4 mt-6"
+      className="w-full max-w-md mx-auto px-4 mt-7"
     >
-      <div className="max-w-md mx-auto space-y-3.5">
+      <div className="space-y-4">
         {/* Modalities Header */}
         <div className="text-center">
           <h3 className="font-heading text-2xl sm:text-3xl font-black tracking-wider text-white uppercase">
             Nossas Modalidades
           </h3>
-          <p className="text-xs text-neutral-400 mt-0.5">
+          <p className="text-xs sm:text-sm text-neutral-400 mt-1">
             Metodologia estruturada para todas as idades e objetivos
           </p>
         </div>
 
-        {/* 2x2 Modalities Grid with discreet WhatsApp button on right */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        {/* 2x2 Modalities Grid with enhanced visibility */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {modalities.map((item, index) => {
             const Icon = item.icon;
             return (
@@ -111,31 +111,33 @@ export const ModalitiesSection: React.FC<ModalitiesSectionProps> = ({ onOpenWhat
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.08, ease: 'easeOut' }}
-                className="p-3.5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 hover:border-emerald-500/30 transition-all text-left flex flex-col justify-between"
+                className="p-4 rounded-2xl bg-neutral-900/80 border border-neutral-800 hover:border-emerald-500/40 transition-all text-left flex flex-col justify-between shadow-sm"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-1.5 gap-2">
-                    <span className="text-sm font-bold text-white flex items-center gap-1.5">
-                      <Icon className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <div className="flex items-center justify-between mb-2 gap-2">
+                    <span className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
+                      </div>
                       <span>{item.title}</span>
                     </span>
-                    <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${item.badgeColor} shrink-0`}>
+                    <span className={`text-[11px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-full border ${item.badgeColor} shrink-0`}>
                       {item.tag}
                     </span>
                   </div>
-                  <p className="text-[11px] text-neutral-400 leading-snug">
+                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed mt-1">
                     {item.desc}
                   </p>
                 </div>
 
-                {/* Discreet WhatsApp action button on the right */}
-                <div className="mt-2.5 pt-2 border-t border-neutral-800/60 flex items-center justify-end">
+                {/* WhatsApp action button */}
+                <div className="mt-3 pt-2.5 border-t border-neutral-800/80 flex items-center justify-end">
                   <button
                     onClick={() => onOpenWhatsApp(item.whatsappMsg)}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/25 text-[10px] font-semibold transition-all cursor-pointer active:scale-95"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-500/30 text-xs font-bold transition-all cursor-pointer active:scale-95"
                     title={`Tenho interesse em ${item.title}`}
                   >
-                    <MessageCircle className="w-3 h-3 text-emerald-400" />
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Tenho interesse</span>
                   </button>
                 </div>

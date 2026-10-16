@@ -77,33 +77,33 @@ export default function App() {
         </div>
       )}
 
-      {/* Main Biosite Container with subtle backdrop transparency */}
-      <main className="relative z-10 w-full max-w-sm sm:max-w-md min-h-screen flex flex-col bg-neutral-950/92 backdrop-blur-md shadow-2xl border-x border-neutral-900/60 pb-12">
+      {/* Main Biosite Container - Generous, high-res responsive layout */}
+      <main className="relative z-10 w-full max-w-md sm:max-w-lg md:max-w-xl min-h-screen flex flex-col bg-neutral-950/92 backdrop-blur-md shadow-2xl border-x border-neutral-900/60 pb-16">
         {/* 1. Cover: Real Photo Header (from attachment 2) */}
         <GymCoverBanner />
 
-        {/* 2. Brand Identity Header & Real Logo (attachment 1) - Compacted */}
-        <section className="relative px-4 pt-2 pb-1.5 text-center z-20">
+        {/* 2. Brand Identity Header & Real Logo (attachment 1) */}
+        <section className="relative px-4 pt-3 pb-2 text-center z-20">
           {/* Logo badge with clean border and depth */}
-          <div className="inline-block p-1.5 rounded-xl bg-black border border-neutral-800 shadow-[0_6px_20px_rgba(0,0,0,0.8)]">
-            <UndergroundLogo size="sm" />
+          <div className="inline-block p-2 rounded-2xl bg-black border border-neutral-800 shadow-[0_8px_25px_rgba(0,0,0,0.85)]">
+            <UndergroundLogo size="md" />
           </div>
 
           {/* Subtitle & Address */}
-          <div className="mt-1.5">
+          <div className="mt-2">
             <div className="flex items-center justify-center gap-2">
-              <span className="h-[1px] w-4 bg-neutral-800"></span>
-              <p className="text-[11px] font-semibold tracking-widest text-neutral-400 uppercase">
+              <span className="h-[1px] w-5 bg-neutral-800"></span>
+              <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-300 uppercase">
                 CT John Grego • Caucaia - CE
               </p>
-              <span className="h-[1px] w-4 bg-neutral-800"></span>
+              <span className="h-[1px] w-5 bg-neutral-800"></span>
             </div>
 
             <button
               onClick={handleScrollToMap}
-              className="mt-1 inline-flex items-center gap-1.5 text-[10px] text-neutral-400 hover:text-white transition-colors cursor-pointer group"
+              className="mt-1.5 inline-flex items-center gap-1.5 text-xs sm:text-sm text-neutral-400 hover:text-white transition-colors cursor-pointer group"
             >
-              <MapPin className="w-2.5 h-2.5 text-red-500 group-hover:scale-110 transition-transform" />
+              <MapPin className="w-3.5 h-3.5 text-red-500 group-hover:scale-110 transition-transform" />
               <span className="underline decoration-neutral-800 underline-offset-2">
                 Av. Juaci Sampaio Pontes, 843
               </span>
@@ -111,8 +111,8 @@ export default function App() {
           </div>
         </section>
 
-        {/* 3. Main Action Links: Exactly 4 compact buttons */}
-        <section className="w-full mt-1">
+        {/* 3. Main Action Links */}
+        <section className="w-full mt-2">
           <BioLinks
             onOpenWhatsApp={handleOpenWhatsAppPreset}
             onOpenPix={() => setIsPixOpen(true)}
@@ -146,17 +146,17 @@ export default function App() {
       </main>
 
       {/* Floating Quick Action WhatsApp Button */}
-      <div className="fixed bottom-4 right-4 z-40">
+      <div className="fixed bottom-5 right-5 z-40">
         <button
           onClick={() => setIsWhatsAppOpen(true)}
-          className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold text-xs uppercase tracking-wider shadow-[0_4px_20px_rgba(16,185,129,0.4)] transition-all hover:scale-105 active:scale-95 cursor-pointer"
+          className="flex items-center gap-2 px-4 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-[0_6px_25px_rgba(16,185,129,0.5)] transition-all hover:scale-105 active:scale-95 cursor-pointer"
           title="Falar no WhatsApp"
         >
-          <span className="relative flex h-2 w-2">
+          <span className="relative flex h-2.5 w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
           </span>
-          <MessageCircle className="w-4 h-4 fill-neutral-950" />
+          <MessageCircle className="w-5 h-5 fill-neutral-950" />
           <span>WhatsApp</span>
         </button>
       </div>

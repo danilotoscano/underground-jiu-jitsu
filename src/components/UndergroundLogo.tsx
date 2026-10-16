@@ -12,10 +12,10 @@ export const UndergroundLogo: React.FC<LogoProps> = ({
   const [imgError, setImgError] = useState(false);
 
   const sizeMap = {
-    sm: 'w-24 max-w-[100px]',
-    md: 'w-36 max-w-[150px]',
-    lg: 'w-48 max-w-[200px]',
-    xl: 'w-60 max-w-[250px]',
+    sm: 'w-32 max-w-[130px]',
+    md: 'w-44 sm:w-52 max-w-[210px]',
+    lg: 'w-56 sm:w-64 max-w-[260px]',
+    xl: 'w-64 sm:w-72 max-w-[300px]',
   };
 
   return (
