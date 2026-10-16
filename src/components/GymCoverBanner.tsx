@@ -76,11 +76,9 @@ export const GymCoverBanner: React.FC = () => {
                 </div>
               </div>
 
-              {/* Contacts Line */}
-              <div className="mt-1 pt-1 border-t border-neutral-800/80 flex items-center justify-center gap-3 text-[9px] text-neutral-300 font-medium">
-                <span>(85) 98718-1673</span>
-                <span className="text-neutral-600">•</span>
-                <span>@ctjohngregoo</span>
+              {/* Centro de Treinamento de Luta on cover */}
+              <div className="mt-1 pt-1 border-t border-neutral-800/80 flex items-center justify-center text-[10px] sm:text-[11px] text-white font-semibold tracking-wider uppercase">
+                <span>Centro de Treinamento de Luta</span>
               </div>
             </div>
           </div>

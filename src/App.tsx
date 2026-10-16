@@ -1,17 +1,17 @@
 import React, { useState, useRef } from 'react';
+import { motion } from 'motion/react';
 import { UndergroundLogo } from './components/UndergroundLogo';
 import { GymCoverBanner } from './components/GymCoverBanner';
 import { BioLinks } from './components/BioLinks';
+import { ModalitiesSection } from './components/ModalitiesSection';
 import { InteractiveMap } from './components/InteractiveMap';
-import { ModalitiesFooter } from './components/ModalitiesFooter';
+import { WorkingHoursSection } from './components/WorkingHoursSection';
 import { PixModal } from './components/PixModal';
 import { WhatsAppModal } from './components/WhatsAppModal';
 import {
   MessageCircle,
   MapPin,
   Check,
-  Flame,
-  Award,
 } from 'lucide-react';
 
 export default function App() {
@@ -53,6 +53,22 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col items-center justify-start relative overflow-x-hidden selection:bg-amber-400 selection:text-black">
+      {/* Atmospheric Darkened Background Image Effect */}
+      <div 
+        className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+        aria-hidden="true"
+      >
+        <img
+          src="/capa-ctjohn.png"
+          alt=""
+          className="w-full h-full object-cover object-center filter brightness-[0.18] contrast-125 scale-105 blur-[1.5px]"
+          onError={(e) => {
+            (e.target as HTMLElement).style.display = 'none';
+          }}
+        />
+        <div className="absolute inset-0 bg-neutral-950/85 bg-gradient-to-b from-neutral-950/80 via-neutral-950/90 to-neutral-950" />
+      </div>
+
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed top-5 z-50 px-4 py-2 rounded-full bg-emerald-500 text-neutral-950 font-bold text-xs shadow-2xl flex items-center gap-2 animate-in fade-in slide-in-from-top-4 duration-200">
@@ -61,8 +77,8 @@ export default function App() {
         </div>
       )}
 
-      {/* Main Biosite Container */}
-      <main className="w-full max-w-sm sm:max-w-md min-h-screen flex flex-col bg-neutral-950 shadow-2xl border-x border-neutral-900/60 pb-12">
+      {/* Main Biosite Container with subtle backdrop transparency */}
+      <main className="relative z-10 w-full max-w-sm sm:max-w-md min-h-screen flex flex-col bg-neutral-950/92 backdrop-blur-md shadow-2xl border-x border-neutral-900/60 pb-12">
         {/* 1. Cover: Real Photo Header (from attachment 2) */}
         <GymCoverBanner />
 
@@ -93,17 +109,9 @@ export default function App() {
               </span>
             </button>
           </div>
-
-          {/* Centro de Treinamento de Luta Badge */}
-          <div className="mt-1.5 flex items-center justify-center">
-            <span className="px-2.5 py-0.5 rounded-full bg-neutral-900 border border-neutral-800 flex items-center gap-1.5 text-[10px] font-semibold text-neutral-200">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              Centro de Treinamento de Luta
-            </span>
-          </div>
         </section>
 
-        {/* 3. Main Action Links: Exactly 4 compact buttons in requested order */}
+        {/* 3. Main Action Links: Exactly 4 compact buttons */}
         <section className="w-full mt-1">
           <BioLinks
             onOpenWhatsApp={handleOpenWhatsAppPreset}
@@ -111,19 +119,29 @@ export default function App() {
           />
         </section>
 
-        {/* 4. Interactive Google Maps Section */}
-        <section ref={mapSectionRef} className="w-full px-4 mt-6 scroll-mt-6">
+        {/* 4. Nossas Modalidades (Antes do Mapa) */}
+        <ModalitiesSection
+          onOpenWhatsApp={handleOpenWhatsAppPreset}
+        />
+
+        {/* 5. Interactive Google Maps Section with smooth reveal */}
+        <motion.section
+          ref={mapSectionRef}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full px-4 mt-6 scroll-mt-6"
+        >
           <InteractiveMap
             onCopyAddress={handleCopyAddress}
             copied={copiedAddress}
           />
-        </section>
+        </motion.section>
 
-        {/* 5. Modalities & Working Hours Footer */}
-        <ModalitiesFooter
-          onOpenWhatsApp={() =>
-            handleOpenWhatsAppPreset('Olá! Gostaria de consultar a grade de horários da Underground Jiu-Jitsu.')
-          }
+        {/* 6. Horário de Funcionamento (No fim) */}
+        <WorkingHoursSection
+          onOpenWhatsApp={handleOpenWhatsAppPreset}
         />
       </main>
 

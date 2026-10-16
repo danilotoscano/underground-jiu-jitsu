@@ -1,7 +1,8 @@
 import React from 'react';
-import { Clock, Swords, Medal, MessageCircle } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Swords, Medal, MessageCircle } from 'lucide-react';
 
-interface ModalitiesFooterProps {
+interface ModalitiesSectionProps {
   onOpenWhatsApp: (customMsg?: string) => void;
 }
 
@@ -44,7 +45,7 @@ const KickIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) =
   </svg>
 );
 
-export const ModalitiesFooter: React.FC<ModalitiesFooterProps> = ({ onOpenWhatsApp }) => {
+export const ModalitiesSection: React.FC<ModalitiesSectionProps> = ({ onOpenWhatsApp }) => {
   const modalities = [
     {
       title: 'Jiu-Jitsu Adulto',
@@ -81,8 +82,14 @@ export const ModalitiesFooter: React.FC<ModalitiesFooterProps> = ({ onOpenWhatsA
   ];
 
   return (
-    <footer className="w-full mt-6 border-t border-neutral-800/80 bg-neutral-950/90 pt-6 pb-8 px-4">
-      <div className="max-w-md mx-auto space-y-5">
+    <motion.section
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full px-4 mt-6"
+    >
+      <div className="max-w-md mx-auto space-y-3.5">
         {/* Modalities Header */}
         <div className="text-center">
           <h3 className="font-heading text-2xl sm:text-3xl font-black tracking-wider text-white uppercase">
@@ -98,8 +105,12 @@ export const ModalitiesFooter: React.FC<ModalitiesFooterProps> = ({ onOpenWhatsA
           {modalities.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.08, ease: 'easeOut' }}
                 className="p-3.5 rounded-2xl bg-neutral-900/60 border border-neutral-800/80 hover:border-emerald-500/30 transition-all text-left flex flex-col justify-between"
               >
                 <div>
@@ -128,42 +139,11 @@ export const ModalitiesFooter: React.FC<ModalitiesFooterProps> = ({ onOpenWhatsA
                     <span>Tenho interesse</span>
                   </button>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
-
-        {/* Singular: Horário de Funcionamento Box */}
-        <div className="p-4 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-950 border border-neutral-800 text-center relative overflow-hidden">
-          <div className="flex items-center justify-center gap-2 text-emerald-400 mb-1">
-            <Clock className="w-4 h-4 text-emerald-400" />
-            <span className="font-heading text-lg font-bold tracking-wider uppercase text-white">
-              Horário de Funcionamento
-            </span>
-          </div>
-          
-          <div className="my-2 py-1.5 px-4 rounded-xl bg-neutral-950/80 border border-neutral-800/80 inline-block">
-            <span className="font-heading text-2xl font-black text-emerald-400 tracking-wider">
-              07h às 22h
-            </span>
-            <span className="block text-[11px] text-neutral-400">
-              Segunda a Sexta-feira
-            </span>
-          </div>
-
-          <p className="text-xs text-neutral-300 mt-1.5">
-            Horários específicos por turma: <strong>consulte a grade atualizada via WhatsApp</strong>.
-          </p>
-
-          <button
-            onClick={() => onOpenWhatsApp('Olá! Gostaria de consultar a grade de horários da Underground Jiu-Jitsu.')}
-            className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-xs font-semibold text-neutral-200 hover:text-white border border-neutral-700 transition-all cursor-pointer active:scale-95"
-          >
-            <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Consultar Grade no WhatsApp</span>
-          </button>
-        </div>
       </div>
-    </footer>
+    </motion.section>
   );
 };
