@@ -1,121 +1,152 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface LogoProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  showText?: boolean;
 }
 
 export const UndergroundLogo: React.FC<LogoProps> = ({
   className = '',
   size = 'md',
-  showText = true,
 }) => {
+  const [imgError, setImgError] = useState(false);
+
   const sizeMap = {
-    sm: { shield: 54, textClass: 'text-lg', subClass: 'text-[9px]' },
-    md: { shield: 76, textClass: 'text-2xl', subClass: 'text-[11px]' },
-    lg: { shield: 110, textClass: 'text-3xl', subClass: 'text-xs' },
-    xl: { shield: 140, textClass: 'text-4xl', subClass: 'text-sm' },
+    sm: 'w-24 max-w-[100px]',
+    md: 'w-36 max-w-[150px]',
+    lg: 'w-48 max-w-[200px]',
+    xl: 'w-60 max-w-[250px]',
   };
 
-  const currentSize = sizeMap[size];
-
   return (
-    <div className={`flex flex-col items-center select-none ${className}`}>
-      {/* Shield Emblem matching user's logo attachment */}
-      <div className="relative group">
-        <svg
-          width={currentSize.shield}
-          height={currentSize.shield * 1.15}
-          viewBox="0 0 200 230"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="drop-shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-transform duration-300 group-hover:scale-105"
-        >
-          <defs>
-            <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="100%" stopColor="#e4e4e7" />
-            </linearGradient>
-            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#ffffff" floodOpacity="0.25" />
-            </filter>
-          </defs>
-
-          {/* Outer Shield Outline */}
-          <path
-            d="M 28 8 
-               L 172 8 
-               L 194 30 
-               L 194 116 
-               C 194 158, 142 196, 100 224 
-               C 58 196, 6 158, 6 116 
-               L 6 30 
-               Z"
-            stroke="url(#shieldGrad)"
-            strokeWidth="8"
-            strokeLinejoin="miter"
-            fill="#09090b"
-          />
-
-          {/* Monogram U + J geometric styling */}
-          <g fill="url(#shieldGrad)" filter="url(#glow)">
-            {/* Left U side */}
-            <path
-              d="M 28 42
-                 H 54
-                 V 102
-                 C 54 118, 66 128, 82 128
-                 C 94 128, 104 121, 108 112
-                 L 126 124
-                 C 118 139, 101 150, 82 150
-                 C 51 150, 28 131, 28 102
-                 Z"
-            />
-            {/* Right J top horizontal & stem */}
-            <path
-              d="M 68 28
-                 H 168
-                 V 46
-                 H 128
-                 V 108
-                 C 128 126, 116 138, 100 144
-                 L 90 126
-                 C 98 122, 104 115, 104 106
-                 V 46
-                 H 68
-                 Z"
-            />
-            {/* J lower right hook accent */}
-            <path
-              d="M 146 54
-                 H 172
-                 V 122
-                 C 172 148, 150 170, 122 176
-                 L 114 156
-                 C 134 152, 146 138, 146 122
-                 Z"
-            />
-          </g>
-        </svg>
-      </div>
-
-      {showText && (
-        <div className="mt-3 flex flex-col items-center text-center">
-          <span
-            className={`font-heading tracking-[0.22em] font-extrabold text-white leading-none ${currentSize.textClass} drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]`}
+    <div className={`flex flex-col items-center justify-center select-none ${className}`}>
+      {/* Try loading uploaded logo file if placed in public, otherwise render pixel-perfect vector */}
+      {!imgError ? (
+        <img
+          src="/logo.webp"
+          alt="Underground Jiu-Jitsu Logo Oficial"
+          className={`${sizeMap[size]} h-auto object-contain drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]`}
+          onError={() => {
+            // Also try logo.png
+            const img = new Image();
+            img.src = '/logo.png';
+            img.onload = () => {
+              // logo.png exists
+            };
+            img.onerror = () => {
+              setImgError(true);
+            };
+          }}
+        />
+      ) : (
+        /* Exact vector recreation of academia-jiu-jitsu-caucaia-underground.webp */
+        <div className={`${sizeMap[size]} flex flex-col items-center`}>
+          <svg
+            viewBox="0 0 500 500"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-auto drop-shadow-[0_4px_24px_rgba(255,255,255,0.12)]"
           >
-            UNDERGROUND
-          </span>
-          <div className="mt-1 flex items-center gap-2">
-            <span className="h-[1.5px] w-5 sm:w-8 bg-neutral-400"></span>
-            <span
-              className={`tracking-[0.35em] font-bold text-neutral-300 uppercase ${currentSize.subClass}`}
+            {/* Pure black backdrop if needed, transparent on container */}
+            <defs>
+              <linearGradient id="whiteGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FFFFFF" />
+                <stop offset="100%" stopColor="#F4F4F5" />
+              </linearGradient>
+            </defs>
+
+            {/* Shield Outline - authentic geometry from attachment 1 */}
+            <path
+              d="M 165 85
+                 L 335 85
+                 L 380 130
+                 L 380 270
+                 L 250 365
+                 L 120 270
+                 L 120 130
+                 Z"
+              stroke="#FFFFFF"
+              strokeWidth="14"
+              strokeLinejoin="miter"
+              fill="none"
+            />
+
+            {/* Stylized UJ Monogram inside shield */}
+            <g fill="#FFFFFF">
+              {/* Top horizontal crossbar */}
+              <path
+                d="M 185 106
+                   H 355
+                   V 142
+                   H 285
+                   V 255
+                   L 250 280
+                   L 235 268
+                   V 142
+                   H 185
+                   Z"
+              />
+
+              {/* Left 'U' body with diagonal cut */}
+              <path
+                d="M 148 135
+                   H 192
+                   V 245
+                   C 192 270, 208 285, 230 285
+                   C 238 285, 246 282, 252 276
+                   L 230 252
+                   C 224 256, 218 256, 214 250
+                   V 200
+                   L 248 166
+                   L 225 143
+                   L 192 176
+                   V 135
+                   H 148
+                   Z"
+              />
+
+              {/* Right 'J' descending hook & lower wing */}
+              <path
+                d="M 312 142
+                   H 355
+                   V 260
+                   C 355 298, 325 330, 275 342
+                   L 262 312
+                   C 292 304, 312 284, 312 260
+                   Z"
+              />
+            </g>
+
+            {/* Typography: UNDERGROUND with octagonal chamfers */}
+            <text
+              x="250"
+              y="420"
+              textAnchor="middle"
+              fill="#FFFFFF"
+              fontFamily="'Teko', 'Impact', 'Arial Black', sans-serif"
+              fontSize="68"
+              fontWeight="900"
+              letterSpacing="0.08em"
+            >
+              UNDERGROUND
+            </text>
+
+            {/* Divider lines and JIU-JITSU */}
+            <line x1="45" y1="446" x2="160" y2="446" stroke="#FFFFFF" strokeWidth="4.5" />
+            <text
+              x="250"
+              y="455"
+              textAnchor="middle"
+              fill="#FFFFFF"
+              fontFamily="'Montserrat', sans-serif"
+              fontSize="24"
+              fontWeight="800"
+              letterSpacing="0.32em"
             >
               JIU-JITSU
-            </span>
-            <span className="h-[1.5px] w-5 sm:w-8 bg-neutral-400"></span>
-          </div>
+            </text>
+            <line x1="340" y1="446" x2="455" y2="446" stroke="#FFFFFF" strokeWidth="4.5" />
+          </svg>
         </div>
       )}
     </div>
