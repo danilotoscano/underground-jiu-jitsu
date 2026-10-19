@@ -25,7 +25,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({
     },
     {
       title: 'Consultar Horários das Turmas',
-      desc: 'Jiu-Jitsu Adulto, Kids 1, Kids 2 ou Taekwondo',
+      desc: 'Jiu-Jitsu Adulto, Jiu-Jitsu Kids 1, Jiu-Jitsu Kids 2 ou Taekwondo',
       icon: Clock,
       message: 'Olá! Gostaria de conferir a grade de horários das aulas da Underground Jiu-Jitsu.',
       accent: 'blue',

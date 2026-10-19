@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   CalendarCheck,
   Instagram,
   ArrowUpRight,
   ChevronRight,
+  Copy,
+  Check,
 } from 'lucide-react';
 
 interface BioLinksProps {
   onOpenWhatsApp: (preset?: string) => void;
-  onOpenPix: () => void;
+  onPixCopied?: () => void;
 }
 
 export const BioLinks: React.FC<BioLinksProps> = ({
   onOpenWhatsApp,
-  onOpenPix,
+  onPixCopied,
 }) => {
+  const [copiedPix, setCopiedPix] = useState(false);
+  const pixKey = '85987181673';
+  const formattedPixKey = '(85) 98718-1673';
+
   const googleReviewUrl =
     'https://search.google.com/local/writereview?placeid=ChIJWwbWwxvLwAcRSrVqrmgfVFA';
   const instagramUrl = 'https://www.instagram.com/ctjohngregoo';
 
+  const handleCopyPix = () => {
+    navigator.clipboard.writeText(pixKey);
+    setCopiedPix(true);
+    onPixCopied?.();
+    setTimeout(() => {
+      setCopiedPix(false);
+    }, 2500);
+  };
+
   return (
     <div className="w-full max-w-md mx-auto px-4 space-y-3 select-none">
-      {/* 1. Aula experimental - Expanded & Highly Visible */}
+      {/* 1. Aula experimental */}
       <button
         onClick={() =>
           onOpenWhatsApp(
@@ -46,7 +61,7 @@ export const BioLinks: React.FC<BioLinksProps> = ({
         <ChevronRight className="w-5 h-5 text-neutral-950 group-hover:translate-x-0.5 transition-transform shrink-0" />
       </button>
 
-      {/* 2. Avaliacao google - Larger icon and readable typography */}
+      {/* 2. Avaliacao google */}
       <a
         href={googleReviewUrl}
         target="_blank"
@@ -73,27 +88,44 @@ export const BioLinks: React.FC<BioLinksProps> = ({
         <ArrowUpRight className="w-5 h-5 text-neutral-500 group-hover:text-white group-hover:translate-x-0.5 transition-all shrink-0" />
       </a>
 
-      {/* 3. pix - Larger green dollar badge */}
+      {/* 3. pix - Click to copy immediately without opening any window */}
       <button
-        onClick={onOpenPix}
-        className="w-full py-3.5 sm:py-4 px-4 sm:px-5 rounded-2xl bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-800 hover:border-emerald-500/50 text-neutral-100 transition-all flex items-center justify-between group shadow-sm cursor-pointer active:scale-[0.98]"
+        onClick={handleCopyPix}
+        className={`w-full py-3.5 sm:py-4 px-4 sm:px-5 rounded-2xl border transition-all flex items-center justify-between group shadow-sm cursor-pointer active:scale-[0.98] ${
+          copiedPix
+            ? 'bg-emerald-950/40 border-emerald-500 text-white shadow-emerald-500/20'
+            : 'bg-neutral-900/90 hover:bg-neutral-800 border-neutral-800 hover:border-emerald-500/50 text-neutral-100'
+        }`}
+        title="Toque para copiar a chave PIX"
       >
         <div className="flex items-center gap-3">
           {/* Green dollar sign (cifrão) */}
           <div className="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center font-bold text-sm text-emerald-400 shrink-0">
-            $
+            {copiedPix ? <Check className="w-4 h-4 text-emerald-400" /> : '$'}
           </div>
-          <span className="text-sm sm:text-base font-semibold tracking-wide">
-            Chave PIX
-          </span>
-          <span className="text-xs text-neutral-400 bg-neutral-800 px-2 py-0.5 rounded font-mono">
-            Copiar / QR Code
+          <div className="text-left">
+            <span className="block text-sm sm:text-base font-semibold tracking-wide">
+              {copiedPix ? 'Chave PIX Copiada!' : 'Chave PIX'}
+            </span>
+          </div>
+          <span
+            className={`text-xs px-2 py-0.5 rounded font-mono ml-auto mr-1 transition-colors ${
+              copiedPix
+                ? 'bg-emerald-500/20 text-emerald-300 font-bold'
+                : 'text-neutral-400 bg-neutral-800'
+            }`}
+          >
+            {copiedPix ? 'Copiada com sucesso!' : formattedPixKey}
           </span>
         </div>
-        <ChevronRight className="w-5 h-5 text-neutral-500 group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-transform shrink-0" />
+        {copiedPix ? (
+          <Check className="w-5 h-5 text-emerald-400 shrink-0 animate-in zoom-in-75 duration-150" />
+        ) : (
+          <Copy className="w-5 h-5 text-neutral-500 group-hover:text-emerald-400 group-hover:scale-105 transition-all shrink-0" />
+        )}
       </button>
 
-      {/* 4. instagram - Prominent icon and text */}
+      {/* 4. instagram */}
       <a
         href={instagramUrl}
         target="_blank"

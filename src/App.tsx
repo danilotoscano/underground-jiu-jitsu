@@ -6,7 +6,6 @@ import { BioLinks } from './components/BioLinks';
 import { ModalitiesSection } from './components/ModalitiesSection';
 import { InteractiveMap } from './components/InteractiveMap';
 import { WorkingHoursSection } from './components/WorkingHoursSection';
-import { PixModal } from './components/PixModal';
 import { WhatsAppModal } from './components/WhatsAppModal';
 import {
   MessageCircle,
@@ -15,27 +14,16 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [isPixOpen, setIsPixOpen] = useState(false);
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-  const [copiedAddress, setCopiedAddress] = useState(false);
   const mapSectionRef = useRef<HTMLDivElement>(null);
-
   const phoneRaw = '5585987181673';
-  const fullAddress = 'Av. Juaci Sampaio Pontes, 843 - Padre Romualdo, Caucaia - CE, 61600-150';
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => {
       setToastMessage(null);
     }, 2800);
-  };
-
-  const handleCopyAddress = () => {
-    navigator.clipboard.writeText(fullAddress);
-    setCopiedAddress(true);
-    showToast('Endereço copiado para a área de transferência!');
-    setTimeout(() => setCopiedAddress(false), 2500);
   };
 
   const handleScrollToMap = () => {
@@ -115,7 +103,7 @@ export default function App() {
         <section className="w-full mt-2">
           <BioLinks
             onOpenWhatsApp={handleOpenWhatsAppPreset}
-            onOpenPix={() => setIsPixOpen(true)}
+            onPixCopied={() => showToast('Chave PIX copiada! (85) 98718-1673')}
           />
         </section>
 
@@ -133,10 +121,7 @@ export default function App() {
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="w-full px-4 mt-6 scroll-mt-6"
         >
-          <InteractiveMap
-            onCopyAddress={handleCopyAddress}
-            copied={copiedAddress}
-          />
+          <InteractiveMap />
         </motion.section>
 
         {/* 6. Horário de Funcionamento (No fim) */}
@@ -162,11 +147,6 @@ export default function App() {
       </div>
 
       {/* Modals */}
-      <PixModal
-        isOpen={isPixOpen}
-        onClose={() => setIsPixOpen(false)}
-      />
-
       <WhatsAppModal
         isOpen={isWhatsAppOpen}
         onClose={() => setIsWhatsAppOpen(false)}
